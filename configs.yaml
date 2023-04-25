@@ -1,0 +1,40 @@
+log:
+  log_dir: 'logs'
+  log_file_name: 'WeakPMLC.log'
+
+project:
+  PROJECT_NAME: 'news_clas'
+  VERSION: 'v1'
+
+data:
+  test_date_rate: 0.3
+  DATASET: 'data'
+  stop_words: 'stop_words.txt'
+  LABEL_NAME_FILE: 'label_names.txt'
+  TRAIN_CORPUS: 'train.txt'
+  TEST_CORPUS: 'test.txt'
+  TRAIN_LABEL: 'train_label.txt'
+  TEST_LABEL: 'test_label.txt'
+  out_file: 'out.txt'
+  final_model: 'final_model.pt'
+  bad_case_data: 'bad_case.csv'
+
+train_args:
+  pretrained_weights_path: './model/wobert'
+  MAX_LEN: 128
+  TRAIN_BATCH: 64
+  ACCUM_STEP: 2
+  EVAL_BATCH: 64
+  category_vocab_size: 300
+  top_pred_num: 60
+
+  CUDA_DEVICE_ORDER: 'PCI_BUS_ID'
+  CUDA_VISIBLE_DEVICES: '1,2,3'
+
+  GPUS: 1
+  MCP_EPOCH: 10
+  SELF_TRAIN_EPOCH: 5
+  dist_port: 18989
+  update_interval: 50
+  match_threshold: 3
+  early_stop: 'store_true'
